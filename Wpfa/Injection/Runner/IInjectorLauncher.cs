@@ -7,7 +7,9 @@ namespace Wpfa.Injection.Runner
     internal interface IInjectorLauncher
     {
         bool Attach(Process process);
+
         IInsider GetInstance();
+
         IMessage InvokeInApplication(IMessage message);
     }
 }

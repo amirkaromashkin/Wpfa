@@ -3,7 +3,7 @@ using System.Runtime.Remoting.Messaging;
 
 namespace Wpfa.Injection.Server
 {
-    public class Insider : MarshalByRefObject, IInsider
+    internal class Insider : MarshalByRefObject, IInsider
     {
         public IMessage Invoke(IMessage msg)
         {

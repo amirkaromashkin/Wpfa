@@ -7,7 +7,7 @@ using System.ServiceModel;
 
 namespace Wpfa.Injection.Server
 {
-    public static class InjectionBody
+    internal static class InjectionBody
     {
         private static ServiceHost _serviceHost;
         private static IpcChannel _ipcChannel;
