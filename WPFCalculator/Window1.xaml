@@ -92,7 +92,7 @@
             <Button Name="B6" Click="DigitBtn_Click" Style="{StaticResource DigitBtn}" Grid.Column="6" Grid.Row="3" >6</Button>
 
 
-            <Button Name="B1" Click="DigitBtn_Click" Style="{StaticResource DigitBtn}" Grid.Column="4" Grid.Row="4" >1</Button>
+            <Button Name="B1" Click="DigitBtn_Click" Style="{StaticResource DigitBtn}" Grid.Column="4" Grid.Row="4"  AutomationProperties.AutomationId="B1_automation_id">1</Button>
             <Button Name="B2" Click="DigitBtn_Click" Style="{StaticResource DigitBtn}" Grid.Column="5" Grid.Row="4" >2</Button>
             <Button Name="B3" Click="DigitBtn_Click" Style="{StaticResource DigitBtn}" Grid.Column="6" Grid.Row="4" >3</Button>
 

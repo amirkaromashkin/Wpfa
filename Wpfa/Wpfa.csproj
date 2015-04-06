@@ -37,11 +37,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\ManagedInjector32-4.0.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -58,6 +61,7 @@
     <Compile Include="Injection\Runner\IApplicationInjector.cs" />
     <Compile Include="Injection\Runner\ApplicationInjector.cs" />
     <Compile Include="Injection\WellKnownNames.cs" />
+    <Compile Include="Manipulation\VisualUtilities.cs" />
     <Compile Include="ProcessIsolationAttribute.cs" />
     <Compile Include="ProcessIsolationTestBase.cs" />
     <Compile Include="Injection\Server\IInsider.cs" />
@@ -68,9 +72,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Manipulation\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\WPFCalculator\WPFCalculator.csproj">
       <Project>{1b914894-face-4f5c-ac91-ec863d6f74b3}</Project>
