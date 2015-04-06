@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace WPFCalculator
+﻿namespace WPFCalculator
 {
     class MyTextBox : System.Windows.Controls.TextBox
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Runtime.Remoting.Proxies;
+using Wpfa.Injection;
 using Wpfa.Injection.Runner;
-using Injector = ManagedInjector.Injector;
 
-namespace Wpfa.Injection
+namespace Wpfa
 {
     public class ProcessIsolationAttribute : ProxyAttribute
     {
@@ -16,7 +16,13 @@ namespace Wpfa.Injection
 
         public override MarshalByRefObject CreateInstance(Type serverType)
         {
-            return (MarshalByRefObject)new ApplicationRealProxy(serverType, _fileName, new InjectorLauncher()).GetTransparentProxy();
+            object createNormally = AppDomain.CurrentDomain.GetData(WellKnownNames.CreateInstanceNormallyMarker);
+            if (createNormally is bool && (bool)createNormally)
+            {
+                return base.CreateInstance(serverType);
+            }
+
+            return (MarshalByRefObject)new ApplicationRealProxy(serverType, _fileName, new ApplicationInjector()).GetTransparentProxy();
         }
     }
 }

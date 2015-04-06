@@ -3,13 +3,11 @@ using System.Runtime.Remoting;
 using System.Runtime.Remoting.Channels;
 using System.Runtime.Remoting.Channels.Ipc;
 using System.Runtime.Serialization.Formatters;
-using System.ServiceModel;
 
 namespace Wpfa.Injection.Server
 {
     internal static class InjectionBody
     {
-        private static ServiceHost _serviceHost;
         private static IpcChannel _ipcChannel;
 
         public static void SetupServer()
@@ -37,12 +35,6 @@ namespace Wpfa.Injection.Server
             _ipcChannel = new IpcChannel(props, null, formatterSinkProvider);
 
             ChannelServices.RegisterChannel(_ipcChannel, false);
-        }
-
-        public static void Dispose()
-        {
-            _serviceHost.Close();
-            _serviceHost = null;
         }
     }
 }

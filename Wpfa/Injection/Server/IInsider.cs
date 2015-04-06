@@ -1,9 +1,12 @@
-﻿using System.Runtime.Remoting.Messaging;
+﻿using System;
+using System.Runtime.Remoting.Messaging;
 namespace Wpfa.Injection.Server
 {
     internal interface IInsider
     {
-        IMessage Invoke(IMessage msg);
+        void CreateInstance(Type type, object[] args);
+
+        IMessage Invoke(IMethodCallMessage msg);
 
         bool IsAlive();
     }
