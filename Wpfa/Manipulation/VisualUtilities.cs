@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -55,7 +54,7 @@ namespace Wpfa.Manipulation
         {
             var bounds = Screen.PrimaryScreen.Bounds;
 
-            return new Point(screenPoint.X * bounds.Width / MaxAbsoluteValue, screenPoint.Y * bounds.Height / MaxAbsoluteValue);
+            return new Point(screenPoint.X / bounds.Width * MaxAbsoluteValue, screenPoint.Y / bounds.Height * MaxAbsoluteValue);
         }
 
         public static DependencyObject FindByAutomationId(Window window, string automationId)
