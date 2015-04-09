@@ -57,11 +57,17 @@ namespace Wpfa.Manipulation
             return new Point(screenPoint.X / bounds.Width * MaxAbsoluteValue, screenPoint.Y / bounds.Height * MaxAbsoluteValue);
         }
 
-        public static DependencyObject FindByAutomationId(Window window, string automationId)
+        public static T FindByAutomationId<T>(Window window, string automationId)
+            where T : DependencyObject
         {
-            return EnumerateVisualTree(window).Single(i => AutomationProperties.GetAutomationId(i) == automationId);
+            return EnumerateVisualTree(window).OfType<T>().Single(i => AutomationProperties.GetAutomationId(i) == automationId);
         }
 
+        public static T FindByName<T>(Window window, string name)
+            where T : FrameworkElement
+        {
+            return EnumerateVisualTree(window).OfType<T>().Single(i => i.Name == name);
+        }
 
         public static IEnumerable<DependencyObject> EnumerateVisualTree(DependencyObject root)
         {

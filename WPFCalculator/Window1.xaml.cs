@@ -29,6 +29,7 @@ namespace WPFCalculator
             InitializeComponent();
             //sub-class our textBox
             DisplayBox = new MyTextBox();
+            DisplayBox.Name = "DisplayBox";
             Grid.SetRow(DisplayBox, 0);
             Grid.SetColumn(DisplayBox, 0);
             Grid.SetColumnSpan(DisplayBox, 9);
@@ -322,58 +323,60 @@ namespace WPFCalculator
         {
             double d = 0.0;
 
-            try {
-            switch (LastOper)
+            try
             {
-                case Operation.Devide:
-                    Paper.AddArguments(LastValue + " / " + Display);
-                    d = (Convert.ToDouble(LastValue) / Convert.ToDouble(Display));
-                    CheckResult(d);
-                    Paper.AddResult(d.ToString());
-                    break;
-                case Operation.Add:
-                    Paper.AddArguments(LastValue + " + " + Display);
-                    d = Convert.ToDouble(LastValue) + Convert.ToDouble(Display);
-                    CheckResult(d);
-                    Paper.AddResult(d.ToString());
-                    break;
-                case Operation.Multiply:
-                    Paper.AddArguments(LastValue + " * " + Display);
-                    d = Convert.ToDouble(LastValue) * Convert.ToDouble(Display);
-                    CheckResult(d);
-                    Paper.AddResult(d.ToString());
-                    break;
-                case Operation.Percent:
-                    //Note: this is different (but make more sense) then Windows calculator
-                    Paper.AddArguments(LastValue + " % " + Display);
-                    d = (Convert.ToDouble(LastValue) * Convert.ToDouble(Display)) / 100.0F;
-                    CheckResult(d);
-                    Paper.AddResult(d.ToString());
-                    break;
-                case Operation.Subtract:
-                    Paper.AddArguments(LastValue + " - " + Display);
-                    d = Convert.ToDouble(LastValue) - Convert.ToDouble(Display);
-                    CheckResult(d);
-                    Paper.AddResult(d.ToString());
-                    break;
-                case Operation.Sqrt:
-                    Paper.AddArguments("Sqrt( " + LastValue + " )");
-                    d = Math.Sqrt(Convert.ToDouble(LastValue));
-                    CheckResult(d);
-                    Paper.AddResult(d.ToString());
-                    break;
-                case Operation.OneX:
-                    Paper.AddArguments("1 / " + LastValue);
-                    d = 1.0F / Convert.ToDouble(LastValue);
-                    CheckResult(d);
-                    Paper.AddResult(d.ToString());
-                    break;
-                case Operation.Negate:
-                    d = Convert.ToDouble(LastValue) * (-1.0F);
-                    break;
+                switch (LastOper)
+                {
+                    case Operation.Devide:
+                        Paper.AddArguments(LastValue + " / " + Display);
+                        d = (Convert.ToDouble(LastValue) / Convert.ToDouble(Display));
+                        CheckResult(d);
+                        Paper.AddResult(d.ToString());
+                        break;
+                    case Operation.Add:
+                        Paper.AddArguments(LastValue + " + " + Display);
+                        d = Convert.ToDouble(LastValue) + Convert.ToDouble(Display);
+                        CheckResult(d);
+                        Paper.AddResult(d.ToString());
+                        break;
+                    case Operation.Multiply:
+                        Paper.AddArguments(LastValue + " * " + Display);
+                        d = Convert.ToDouble(LastValue) * Convert.ToDouble(Display);
+                        CheckResult(d);
+                        Paper.AddResult(d.ToString());
+                        break;
+                    case Operation.Percent:
+                        //Note: this is different (but make more sense) then Windows calculator
+                        Paper.AddArguments(LastValue + " % " + Display);
+                        d = (Convert.ToDouble(LastValue) * Convert.ToDouble(Display)) / 100.0F;
+                        CheckResult(d);
+                        Paper.AddResult(d.ToString());
+                        break;
+                    case Operation.Subtract:
+                        Paper.AddArguments(LastValue + " - " + Display);
+                        d = Convert.ToDouble(LastValue) - Convert.ToDouble(Display);
+                        CheckResult(d);
+                        Paper.AddResult(d.ToString());
+                        break;
+                    case Operation.Sqrt:
+                        Paper.AddArguments("Sqrt( " + LastValue + " )");
+                        d = Math.Sqrt(Convert.ToDouble(LastValue));
+                        CheckResult(d);
+                        Paper.AddResult(d.ToString());
+                        break;
+                    case Operation.OneX:
+                        Paper.AddArguments("1 / " + LastValue);
+                        d = 1.0F / Convert.ToDouble(LastValue);
+                        CheckResult(d);
+                        Paper.AddResult(d.ToString());
+                        break;
+                    case Operation.Negate:
+                        d = Convert.ToDouble(LastValue) * (-1.0F);
+                        break;
                 }
             }
-            catch {
+            catch
+            {
                 d = 0;
                 Window parent = (Window)MyPanel.Parent;
                 Paper.AddResult("Error");
@@ -424,30 +427,31 @@ namespace WPFCalculator
             }
             else
             {
-                if (c >= '0' && c <= '9') {
+                if (c >= '0' && c <= '9')
+                {
                     Display = Display + c;
                 }
                 else
-                if (c == '\b')  //backspace ?
-                {
-                    if (Display.Length <= 1)
-                        Display = String.Empty;
-                    else
+                    if (c == '\b')  //backspace ?
                     {
-                        int i = Display.Length;
-                        Display = Display.Remove(i - 1, 1);  //remove last char 
+                        if (Display.Length <= 1)
+                            Display = String.Empty;
+                        else
+                        {
+                            int i = Display.Length;
+                            Display = Display.Remove(i - 1, 1);  //remove last char 
+                        }
                     }
-                }
 
             }
 
             UpdateDisplay();
         }
-   
+
         void OnMenuAbout(object sender, RoutedEventArgs e)
         {
             Window parent = (Window)MyPanel.Parent;
-            MessageBox.Show(parent, parent.Title + " - By Jossef Goldberg ", parent.Title,MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(parent, parent.Title + " - By Jossef Goldberg ", parent.Title, MessageBoxButton.OK, MessageBoxImage.Information);
         }
         void OnMenuExit(object sender, RoutedEventArgs e)
         {
@@ -461,8 +465,8 @@ namespace WPFCalculator
         //Not implemenetd 
         void OnMenuScientific(object sender, RoutedEventArgs e)
         {
-           //((MenuItem)StandardMenu).IsChecked = false; 
-        }   
+            //((MenuItem)StandardMenu).IsChecked = false; 
+        }
         private class PaperTrail
         {
             string args;

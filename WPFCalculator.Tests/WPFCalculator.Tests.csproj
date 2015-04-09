@@ -67,6 +67,10 @@
       <Project>{7c6dedbb-2bb9-4a5f-9837-21d7c2320553}</Project>
       <Name>Wpfa</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WPFCalculator\WPFCalculator.csproj">
+      <Project>{1b914894-face-4f5c-ac91-ec863d6f74b3}</Project>
+      <Name>WPFCalculator</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

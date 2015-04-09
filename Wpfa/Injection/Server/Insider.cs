@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.Remoting;
 using System.Runtime.Remoting.Messaging;
 using System.Windows;
