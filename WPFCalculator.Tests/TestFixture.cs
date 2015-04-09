@@ -9,7 +9,6 @@ using Wpfa.Manipulation;
 namespace WPFCalculator.Tests
 {
     [ProcessIsolation("WPFCalculator.exe")]
-    [TestFixture]
     public class TestFixture : ProcessIsolationTestBase
     {
         [Test]
@@ -25,7 +24,7 @@ namespace WPFCalculator.Tests
 
             // Then
             MyTextBox resultsBox = VisualUtilities.FindByName<MyTextBox>(mainWindow, "DisplayBox");
-            Assert.AreEqual(resultsBox.Text, "12");
+            Assert.AreEqual(resultsBox.Text, "1");
         }
     }
 }

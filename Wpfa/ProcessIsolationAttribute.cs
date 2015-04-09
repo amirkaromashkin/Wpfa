@@ -14,10 +14,21 @@ namespace Wpfa
             _fileName = fileName;
         }
 
+        private static bool NeedCreateNormally
+        {
+            get
+            {
+                object marker = AppDomain.CurrentDomain.GetData(WellKnownNames.CreateInstanceNormallyMarker);
+                
+                bool needCreateNormally = marker is bool && (bool) marker;
+               
+                return needCreateNormally;
+            }
+        }
+
         public override MarshalByRefObject CreateInstance(Type serverType)
         {
-            object createNormally = AppDomain.CurrentDomain.GetData(WellKnownNames.CreateInstanceNormallyMarker);
-            if (createNormally is bool && (bool)createNormally)
+            if (NeedCreateNormally)
             {
                 return base.CreateInstance(serverType);
             }
